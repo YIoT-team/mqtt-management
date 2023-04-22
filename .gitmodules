@@ -1,0 +1,3 @@
+[submodule "ext/management-center"]
+	path = ext/management-center
+	url = https://github.com/cedalo/management-center.git

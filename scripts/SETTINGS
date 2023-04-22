@@ -1,0 +1,34 @@
+#  ────────────────────────────────────────────────────────────
+#                     ╔╗  ╔╗ ╔══╗      ╔════╗
+#                     ║╚╗╔╝║ ╚╣╠╝      ║╔╗╔╗║
+#                     ╚╗╚╝╔╝  ║║  ╔══╗ ╚╝║║╚╝
+#                      ╚╗╔╝   ║║  ║╔╗║   ║║
+#                       ║║   ╔╣╠╗ ║╚╝║   ║║
+#                       ╚╝   ╚══╝ ╚══╝   ╚╝
+#    ╔╗╔═╗                    ╔╗                     ╔╗
+#    ║║║╔╝                   ╔╝╚╗                    ║║
+#    ║╚╝╝  ╔══╗ ╔══╗ ╔══╗  ╔╗╚╗╔╝  ╔══╗ ╔╗ ╔╗╔╗ ╔══╗ ║║  ╔══╗
+#    ║╔╗║  ║║═╣ ║║═╣ ║╔╗║  ╠╣ ║║   ║ ═╣ ╠╣ ║╚╝║ ║╔╗║ ║║  ║║═╣
+#    ║║║╚╗ ║║═╣ ║║═╣ ║╚╝║  ║║ ║╚╗  ╠═ ║ ║║ ║║║║ ║╚╝║ ║╚╗ ║║═╣
+#    ╚╝╚═╝ ╚══╝ ╚══╝ ║╔═╝  ╚╝ ╚═╝  ╚══╝ ╚╝ ╚╩╩╝ ║╔═╝ ╚═╝ ╚══╝
+#                    ║║                         ║║
+#                    ╚╝                         ╚╝
+#
+#    Lead Maintainer: YIoT team
+#  ────────────────────────────────────────────────────────────
+
+DOCKER_IMAGE_PREF="${BUILD_NUMBER:-0}"
+BUILD_VERSION="0.1.0.${DOCKER_IMAGE_PREF}"
+
+DOCKER_REGISTRY_PREFIX="registry.digitalocean.com/"
+
+if [ "${1}" == "prod" ] ; then
+    YIOT_ENV="PROD"
+    DOCKER_IMAGE="yiot/cedalo-management-center"
+else
+    YIOT_ENV="STG"
+    DOCKER_IMAGE="yiot/cedalo-management-center-stg"
+fi
+
+DOCKER_IMAGE0="${DOCKER_REGISTRY_PREFIX}${DOCKER_IMAGE}:latest"
+DOCKER_IMAGE1="${DOCKER_REGISTRY_PREFIX}${DOCKER_IMAGE}:${BUILD_VERSION}"
